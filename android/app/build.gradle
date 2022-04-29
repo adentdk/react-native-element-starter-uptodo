@@ -79,7 +79,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -133,6 +133,26 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
+
+    flavorDimensions "default"
+
+    productFlavors {
+        development {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'com.rnatomicdesign.dev'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
+        staging {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'com.rnatomicdesign.staging'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
+        production {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'com.rnatomicdesign'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
+    }
 
     defaultConfig {
         applicationId "com.rnatomicdesign"
