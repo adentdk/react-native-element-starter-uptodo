@@ -1,10 +1,14 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Button, makeStyles, Text } from '@rneui/themed';
 import Main from 'components/templates/Main';
 import React, { FC } from 'react';
 import { View } from 'react-native';
 
-const GetStartScreen: FC = () => {
+interface Props extends NativeStackScreenProps<iNavigator.RootParamList, 'OnBoarding'> { }
+
+const GetStartScreen: FC<Props> = ({navigation}) => {
   const styles = useStyles();
+
   return (
     <Main>
       <View style={styles.body}>
@@ -12,9 +16,9 @@ const GetStartScreen: FC = () => {
         <Text lg center style={styles.description}>{'Please login to your account or create new account to continue'}</Text>
       </View>
       <View style={styles.footer}>
-        <Button title={'LOGIN'} containerStyle={styles.footerButton} />
+        <Button title={'LOGIN'} containerStyle={styles.footerButton} onPress={() => navigation.navigate('Login')} />
 
-        <Button type="outline" title={'CREATE ACCOUNT'} containerStyle={styles.footerButton} titleStyle={styles.createAccountTitle} />
+        <Button type="outline" title={'CREATE ACCOUNT'} containerStyle={styles.footerButton} titleStyle={styles.createAccountTitle} onPress={() => navigation.navigate('Register')} />
       </View>
     </Main>
   )
