@@ -1,7 +1,6 @@
 import { ThemeProvider } from '@rneui/themed';
 import Navigator from 'navigator';
-import React, { FC } from 'react';
-import { StatusBar } from 'react-native';
+import React, { FC, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import theme from './src/theme'

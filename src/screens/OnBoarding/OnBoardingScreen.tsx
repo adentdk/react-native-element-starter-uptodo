@@ -1,12 +1,15 @@
-import React, { FC, useCallback, useRef } from 'react';
+import React, { FC, useCallback, useLayoutEffect, useRef } from 'react';
 import Main from '@components/templates/Main';
 import useOnBoarding from './useOnBoarding';
 import { FlatList, ScrollView, View } from 'react-native';
 import { Button, makeStyles, Text } from '@rneui/themed';
 import { screenDimensions } from 'helpers/viewport';
 import { addAlpha } from 'helpers/colors';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const OnBoardingScreen: FC = () => {
+interface Props extends NativeStackScreenProps<iNavigator.RootParamList, 'OnBoarding'> { }
+
+const OnBoardingScreen: FC<Props> = ({navigation}) => {
   const { onBoardingData, currentIndex, setCurrentIndex } = useOnBoarding();
   const styles = useStyles();
 
@@ -37,6 +40,18 @@ const OnBoardingScreen: FC = () => {
       }
     }
   }, [currentIndex, setCurrentIndex, onBoardingData]);
+
+  const onDone = useCallback(() => {
+    navigation.navigate("StartScreen");
+  }, [navigation]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: ({}) => (
+        <Text onPress={onDone} lg style={[styles.backTitle, {marginLeft: 10}]}>{'SKIP'}</Text>
+      ),
+    });
+  }, [])
 
   return (
     <Main>
@@ -83,13 +98,17 @@ const OnBoardingScreen: FC = () => {
       </ScrollView>
 
       <View style={styles.footer}>
-        <Button type="clear" title={'Back'} onPress={onBack} titleStyle={styles.backButtonTitle} />
+        {currentIndex > 0  ? (
+          <Text onPress={onBack} lg style={styles.backTitle}>{'BACK'}</Text>
+        ) : (
+          <View />
+        )}
 
 
         {currentIndex === onBoardingData.length - 1 ? (
-          <Button title={'Get Started'} onPress={onNext} />
+          <Button title={'GET STARTED'} onPress={onDone} />
         ) : (
-          <Button title={'Next'} onPress={onNext} />
+          <Button title={'NEXT'} onPress={onNext} />
         )}
       </View>
     </Main>
@@ -140,10 +159,10 @@ const useStyles = makeStyles(({ colors }) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginHorizontal: 25,
+    marginHorizontal: 24,
     paddingVertical: 49
   },
-  backButtonTitle: {
+  backTitle: {
     color: addAlpha(colors?.grey0, 0.44)
   }
 }))
