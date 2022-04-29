@@ -6,7 +6,7 @@ const themes = createTheme({
   ...components,
   lightColors: lightColors,
   darkColors: darkColors,
-  mode: 'dark',
+  mode: 'light',
 });
 
 export default themes;

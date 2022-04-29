@@ -7,6 +7,7 @@ import GetStart from 'screens/GetStart';
 
 import Icon from 'react-native-vector-icons/Octicons';
 import { useTheme } from '@rneui/themed';
+import Login from 'screens/Login';
 
 const RootNavigatior: FC = ({ }) => {
   const { Navigator, Group, Screen } = createNativeStackNavigator<iNavigator.RootParamList>();
@@ -15,6 +16,7 @@ const RootNavigatior: FC = ({ }) => {
     <Navigator
       screenOptions={{
         headerBackImageSource: { ...Icon.getImageSourceSync('chevron-left', 24, theme.colors.black), width: 24, height: 24 },
+        headerShadowVisible: false,
       }}
       initialRouteName="Intro"> 
 
@@ -39,8 +41,8 @@ const RootNavigatior: FC = ({ }) => {
         />
       </Group>
 
-
       <Screen options={{title: ''}} name="GetStart" component={GetStart} />
+      <Screen options={{title: ''}} name="Login" component={Login} />
     </Navigator>
   )
 }

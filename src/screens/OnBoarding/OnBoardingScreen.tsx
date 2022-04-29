@@ -1,11 +1,12 @@
 import React, { FC, useCallback, useLayoutEffect, useRef } from 'react';
 import Main from '@components/templates/Main';
 import useOnBoarding from './useOnBoarding';
-import { FlatList, ScrollView, View } from 'react-native';
+import { BackHandler, FlatList, ScrollView, View } from 'react-native';
 import { Button, makeStyles, Text } from '@rneui/themed';
 import { screenDimensions } from 'helpers/viewport';
 import { addAlpha } from 'helpers/colors';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useFocusEffect } from '@react-navigation/native';
 
 interface Props extends NativeStackScreenProps<iNavigator.RootParamList, 'OnBoarding'> { }
 
@@ -52,6 +53,18 @@ const OnBoardingScreen: FC<Props> = ({navigation}) => {
       ),
     });
   }, [])
+
+  useFocusEffect(() => {
+    const backhandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      if (currentIndex > 0) {
+        onBack();
+        return true;
+      }
+      return false;
+    })
+
+    return () => backhandler.remove();
+  });
 
   return (
     <Main>
