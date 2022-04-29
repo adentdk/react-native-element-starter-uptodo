@@ -11,6 +11,13 @@ module.exports = {
             "@components": "./src/components",
           }
         }
-    ]
+    ],
+    ["module:react-native-dotenv", {
+      "moduleName": "@env",
+      "path": ".env",
+      "safe": false,
+      "allowUndefined": true,
+      "verbose": false
+    }]
   ]
 };
