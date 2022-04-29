@@ -2,7 +2,7 @@ declare namespace iNavigator {
   type RootParamList = {
     Intro: undefined;
     OnBoarding: undefined;
-    StartScreen: undefined;
+    GetStart: undefined;
     Login: undefined;
     Register: undefined;
     FingerPrintScanner: undefined;

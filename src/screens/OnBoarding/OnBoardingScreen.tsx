@@ -42,7 +42,7 @@ const OnBoardingScreen: FC<Props> = ({navigation}) => {
   }, [currentIndex, setCurrentIndex, onBoardingData]);
 
   const onDone = useCallback(() => {
-    navigation.navigate("StartScreen");
+    navigation.navigate("GetStart");
   }, [navigation]);
 
   useLayoutEffect(() => {
@@ -130,7 +130,7 @@ const useStyles = makeStyles(({ colors }) => ({
   },
   carouselDescription: {
     marginTop: 42,
-    lineHeight: 16 * 1.5,
+    lineHeight: 16 * 1.505,
   },
   carouselIndicatorWrapper: {
     position: 'absolute',

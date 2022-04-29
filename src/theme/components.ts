@@ -2,7 +2,6 @@ import { ThemeOptions } from "@rneui/themed";
 import { fontFamilies } from "./font";
 
 const Text: ThemeOptions['Text'] = ({ fontFamily, lg, center, style }) => {
-  console.log(lg)
   return {
     h1Style: {
       fontFamily: fontFamilies.bold,
