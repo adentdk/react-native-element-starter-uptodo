@@ -1,13 +1,17 @@
+import { ThemeProvider } from '@rneui/themed';
+import Navigator from 'navigator';
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import theme from './src/theme'
 
 const App: FC = () => {
   return (
     <SafeAreaProvider>
-      <View>
-        <Text>Hello</Text>
-      </View>
+      <ThemeProvider theme={theme}>
+        <Navigator />
+      </ThemeProvider>
     </SafeAreaProvider>
   )
 }
