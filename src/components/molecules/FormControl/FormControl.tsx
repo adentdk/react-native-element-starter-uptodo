@@ -1,4 +1,4 @@
-import { Input, InputProps, makeStyles } from '@rneui/themed';
+import { Input, InputProps, makeStyles, useTheme } from '@rneui/themed';
 import { addAlpha } from 'helpers/colors';
 import React, { FC, forwardRef } from 'react';
 import { Controller, ControllerProps } from 'react-hook-form'
@@ -8,8 +8,9 @@ interface Props extends Omit<InputProps, 'ref' | 'value'> {
   formProps: Omit<ControllerProps<any>, 'render'>
 }
 
-const FormControl = forwardRef<TextInput, Props>(({ formProps, inputContainerStyle, onChangeText, onBlur, ...props }, ref) => {
+const FormControl = forwardRef<TextInput, Props>(({ formProps, labelStyle, inputContainerStyle, placeholderTextColor, onChangeText, onBlur, ...props }, ref) => {
   const styles = useStyles();
+  const {theme} = useTheme()
 
   const onChangeTextHandler = (text: string) => {
     if (onChangeText) {
@@ -40,6 +41,8 @@ const FormControl = forwardRef<TextInput, Props>(({ formProps, inputContainerSty
             onBlur()
           }}
           inputContainerStyle={[inputContainerStyle, styles.inputContainer]}
+          labelStyle={[labelStyle, styles.label]}
+          placeholderTextColor={placeholderTextColor || addAlpha(theme.colors.black, 0.7)}
           errorMessage={error?.message}
         />
       )}
@@ -52,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.mode === 'light' ? addAlpha(theme.colors?.grey5, 0.23) : addAlpha(theme.colors?.black, 0.01),
     borderColor: theme.colors?.grey5,
   },
+  label: {
+    color: theme.colors?.black,
+  }
 }));
 
 export type {

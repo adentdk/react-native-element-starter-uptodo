@@ -30,6 +30,7 @@ const RegisterForm: FC<Props> = ({ registerForm, onSubmit }) => {
         onSubmitEditing={onEmailSubmitEditing}
         label={'Email'}
         placeholder={'Enter your Email'}
+        keyboardType="email-address"
         formProps={{
           name: 'email',
           rules: {

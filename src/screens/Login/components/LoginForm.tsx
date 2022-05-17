@@ -26,6 +26,7 @@ const LoginForm: FC<Props> = ({ loginForm, onSubmit }) => {
         onSubmitEditing={onEmailSubmitEditing}
         label={'Email'}
         placeholder={'Enter your Email'}
+        keyboardType="email-address"
         formProps={{
           name: 'email',
           rules: {
