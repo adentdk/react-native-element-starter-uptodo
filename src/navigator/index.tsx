@@ -29,7 +29,7 @@ const Navigator: FC = () => {
         }
       })
     })()
-  }, [])
+  }, [colorScheme])
 
   return (
     <NavigationContainer
