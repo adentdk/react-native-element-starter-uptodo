@@ -3,25 +3,30 @@ import React, { FC, Fragment, useRef } from "react";
 import { UseFormReturn, SubmitHandler } from "react-hook-form";
 import { TextInput } from "react-native";
 import { useStyles } from "../styles";
-import { iLoginScreen } from "../types";
+import { iRegisterScreen } from "../types";
 
 interface Props {
-  loginForm: UseFormReturn<iLoginScreen.LoginForm>,
-  onSubmit: SubmitHandler<iLoginScreen.LoginForm>,
+  registerForm: UseFormReturn<iRegisterScreen.RegisterForm>,
+  onSubmit: SubmitHandler<iRegisterScreen.RegisterForm>,
 }
 
-const LoginForm: FC<Props> = ({ loginForm, onSubmit }) => {
+const RegisterForm: FC<Props> = ({ registerForm, onSubmit }) => {
   const styles = useStyles();
   const passwordRef = useRef<TextInput>(null);
+  const confirmPasswordRef = useRef<TextInput>(null);
 
   const onEmailSubmitEditing = () => {
     passwordRef.current?.focus();
   };
 
+  const onPasswordSubmitEditing = () => {
+    confirmPasswordRef.current?.focus();
+  };
+
   return (
     <Fragment>
       <FormControl
-        containerStyle={styles.loginForm}
+        containerStyle={styles.registerForm}
         onSubmitEditing={onEmailSubmitEditing}
         label={'Email'}
         placeholder={'Enter your Email'}
@@ -33,13 +38,14 @@ const LoginForm: FC<Props> = ({ loginForm, onSubmit }) => {
               message: 'Email is required',
             }
           },
-          control: loginForm.control,
+          control: registerForm.control,
         }}
       />
 
       <FormControl
         ref={passwordRef}
-        containerStyle={styles.loginForm}
+        containerStyle={styles.registerForm}
+        onSubmitEditing={onPasswordSubmitEditing}
         inputStyle={{ letterSpacing: 8 }}
         label={'Password'}
         placeholder={'••••••••'}
@@ -55,7 +61,25 @@ const LoginForm: FC<Props> = ({ loginForm, onSubmit }) => {
               message: 'Password must be at least 6 characters',
             }
           },
-          control: loginForm.control,
+          control: registerForm.control,
+        }}
+        secureTextEntry
+      />
+
+      <FormControl
+        ref={confirmPasswordRef}
+        containerStyle={styles.registerForm}
+        inputStyle={{ letterSpacing: 8 }}
+        label={'Confirm Password'}
+        placeholder={'••••••••'}
+        formProps={{
+          name: 'confirmPassword',
+          rules: {
+            validate: {
+              value: (value) => value === registerForm.getValues("password") || 'Passwords do not match',
+            }
+          },
+          control: registerForm.control,
         }}
         secureTextEntry
       />
@@ -63,4 +87,4 @@ const LoginForm: FC<Props> = ({ loginForm, onSubmit }) => {
   )
 }
 
-export default LoginForm;
+export default RegisterForm;

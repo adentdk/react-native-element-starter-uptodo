@@ -4,7 +4,7 @@ declare namespace iLoginScreen {
   interface Props extends NativeStackScreenProps<iNavigator.RootParamList, 'Login'> { }
 
   interface LoginForm {
-    username: string;
+    email: string;
     password: string;
   }
 }

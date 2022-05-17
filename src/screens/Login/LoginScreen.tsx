@@ -53,7 +53,7 @@ const LoginScreen: FC<iLoginScreen.Props> = ({ navigation }) => {
 
           <View style={{ flex: 1 }} />
 
-          <Text center color={theme.colors.grey3}>Don’t have an account? <Text fontFamily="bold" onPress={() => { }}>Register</Text></Text>
+          <Text center color={theme.colors.grey3}>Don’t have an account? <Text fontFamily="bold" onPress={() => navigation.navigate('Register')}>Register</Text></Text>
         </View>
       </ScrollView>
     </Main>

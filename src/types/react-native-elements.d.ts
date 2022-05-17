@@ -13,13 +13,13 @@ declare module '@rneui/themed' {
     color?: string;
   }
 
-  export interface FullTheme {
-    Text: Partial<TextProps>;
+  export interface Theme {
+    headerHeight?: number;
+    screenWithHeader?: number;
+    screenWithTwoHeader?: number;
   }
 
-  export interface Theme {
-    headerHeight: number;
-    screenWithHeader: number;
-    screenWithTwoHeader: number;
+  export interface FullTheme {
+    Text: Partial<TextProps>;
   }
 }

@@ -1,23 +1,34 @@
 import { NavigationContainer, Theme } from "@react-navigation/native";
 import { useTheme } from "@rneui/themed";
 import React, { FC, useEffect } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, useColorScheme } from "react-native";
 import RootNavigatior from "./RootNavigation";
 
 const Navigator: FC = () => {
 
   const { theme, updateTheme } = useTheme();
 
+  const colorScheme = useColorScheme();
+
   useEffect(() => {
     (() => {
       const { height } = Dimensions.get('window');
 
       updateTheme((_theme) => ({
-        headerHeight: 49,
-        screenWithHeader: height - _theme.headerHeight,
-        screenWithTwoHeader: height - _theme.headerHeight * 2,
+        screenWithHeader: height - (_theme?.headerHeight || 0),
+        screenWithTwoHeader: height - (_theme?.headerHeight || 0 * 2),
       }))
     })();
+  }, [])
+
+  useEffect(() => {
+    (() => {
+      updateTheme(() => {
+        return {
+          mode: colorScheme === 'dark' ? 'dark' : 'light',
+        }
+      })
+    })()
   }, [])
 
   return (
