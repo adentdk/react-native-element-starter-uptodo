@@ -18,7 +18,7 @@ const RootNavigatior: FC = ({ }) => {
         headerBackImageSource: { ...Icon.getImageSourceSync('chevron-left', 24, theme.colors.black), width: 24, height: 24 },
         headerShadowVisible: false,
       }}
-      initialRouteName="Intro"> 
+      initialRouteName="Login"> 
 
       {/* with transparent header */}
       <Group

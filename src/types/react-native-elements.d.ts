@@ -15,4 +15,10 @@ declare module '@rneui/themed' {
   export interface FullTheme {
     Text: Partial<TextProps>;
   }
+
+  export interface Theme {
+    headerHeight: number;
+    screenWithHeader: number;
+    screenWithTwoHeader: number;
+  }
 }
