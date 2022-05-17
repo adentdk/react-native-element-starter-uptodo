@@ -1,4 +1,7 @@
-import { Button, makeStyles, Text, Icon, useTheme } from '@rneui/themed';
+import AppleIcon from '@assets/svg-icons/AppleInc.svg'
+import GoogleIcon from '@assets/svg-icons/GoogleInc.svg'
+
+import { Button, Text, Icon, useTheme } from '@rneui/themed';
 import HorizontalLine from 'components/atoms/HorizontalLine';
 import Main from 'components/templates/Main';
 import React, { FC } from 'react';
@@ -32,9 +35,10 @@ const LoginScreen: FC<iLoginScreen.Props> = ({ navigation }) => {
           <Button
             title="Login with Google"
             type="outline"
+            titleStyle={{ color: theme.colors.black }}
             onPress={() => { }}
             icon={
-              <Icon name="google" type="material-community" color={theme.colors.primary} />
+              <GoogleIcon  />
             }
             containerStyle={styles.buttons}
           />
@@ -43,9 +47,10 @@ const LoginScreen: FC<iLoginScreen.Props> = ({ navigation }) => {
             <Button
               title="Login with Apple"
               type="outline"
+              titleStyle={{ color: theme.colors.black }}
               onPress={() => { }}
               icon={
-                <Icon name="apple" type="material-community" color={theme.colors.primary} />
+                <AppleIcon />
               }
               containerStyle={styles.buttons}
             />

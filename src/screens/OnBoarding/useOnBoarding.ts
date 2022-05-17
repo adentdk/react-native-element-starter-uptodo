@@ -1,7 +1,7 @@
 
-import OnBoardingImage1 from '@assets/images/OnBoarding-1.svg';
-import OnBoardingImage2 from '@assets/images/OnBoarding-2.svg';
-import OnBoardingImage3 from '@assets/images/OnBoarding-3.svg';
+import OnBoardingImage1 from '@assets/svg-ilustrations/OnBoarding-1.svg';
+import OnBoardingImage2 from '@assets/svg-ilustrations/OnBoarding-2.svg';
+import OnBoardingImage3 from '@assets/svg-ilustrations/OnBoarding-3.svg';
 import { useState } from 'react';
 
 const ON_BOARDING_DATA = [

@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 
 import Intro from '@screens/Intro';
 import OnBoarding from '@screens/OnBoarding';

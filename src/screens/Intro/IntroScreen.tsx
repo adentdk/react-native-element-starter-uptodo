@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Text } from '@rneui/themed';
 
-import Logo from '@assets/icons/Logo.svg'
+import Logo from '@assets/svg-icons/Logo.svg'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Main from 'components/templates/Main/Main';
 
