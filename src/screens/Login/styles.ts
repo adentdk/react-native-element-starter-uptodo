@@ -18,6 +18,11 @@ export const useStyles = makeStyles((theme) => {
     },
     buttons: {
       marginTop: 20,
+    },
+    forgotPassword: {
+      textAlign: 'right',
+      marginTop: -24,
+      fontSize: 12, 
     }
   }
 })

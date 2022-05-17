@@ -1,3 +1,4 @@
+import { Text } from "@rneui/themed";
 import FormControl from "components/molecules/FormControl";
 import React, { FC, Fragment, useRef } from "react";
 import { UseFormReturn, SubmitHandler } from "react-hook-form";
@@ -59,6 +60,9 @@ const LoginForm: FC<Props> = ({ loginForm, onSubmit }) => {
         }}
         secureTextEntry
       />
+      <Text style={styles.forgotPassword}>
+        Forgot your password?
+      </Text>
     </Fragment>
   )
 }
