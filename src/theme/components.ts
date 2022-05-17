@@ -1,7 +1,7 @@
-import { Theme, ThemeOptions } from "@rneui/themed";
+import { ThemeOptions } from "@rneui/themed";
 import { fontFamilies } from "./font";
 
-const Text: ThemeOptions['Text'] = ({ fontFamily, lg, center }) => {
+const Text: ThemeOptions['Text'] = ({ fontFamily, lg, center, color }) => {
   return {
     h1Style: {
       fontFamily: fontFamilies.bold,
@@ -15,28 +15,33 @@ const Text: ThemeOptions['Text'] = ({ fontFamily, lg, center }) => {
       {
         fontFamily: fontFamily !== undefined ? fontFamilies[fontFamily] : fontFamilies.regular,
       },
+      color !== undefined && {
+        color,
+      },
       lg && {
         fontSize: 16,
       },
       center && {
         textAlign: "center",
+      }
+    ]
+  }
+}
+
+const Button: ThemeOptions['Button'] = ({ type }) => {
+  return {
+    titleStyle: [
+      {
+        fontFamily: fontFamilies.regular,
+        fontSize: 16,
+        paddingVertical: 12,
+        paddingHorizontal: 24,
       },
     ]
   }
 }
 
-const Button: ThemeOptions['Button'] = ({ }) => {
-  return {
-    titleStyle: {
-      fontFamily: fontFamilies.regular,
-      fontSize: 16,
-      paddingVertical: 12,
-      paddingHorizontal: 24,
-    }
-  }
-}
-
-const Input: ThemeOptions['Input'] = ({  }) => {
+const Input: ThemeOptions['Input'] = ({ errorMessage }) => {
   return {
     labelStyle: {
       fontFamily: fontFamilies.regular,

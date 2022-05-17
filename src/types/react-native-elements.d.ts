@@ -10,6 +10,7 @@ declare module '@rneui/themed' {
     lg?: boolean;
     lgStyle?: StyleProp<TextStyle>;
     center?: boolean;
+    color?: string;
   }
 
   export interface FullTheme {
