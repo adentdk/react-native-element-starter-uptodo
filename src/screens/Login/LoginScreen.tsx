@@ -17,7 +17,9 @@ const LoginScreen: FC<iLoginScreen.Props> = ({ navigation }) => {
   const loginForm = useForm<iLoginScreen.LoginForm>();
 
   const onSubmitLogin: SubmitHandler<iLoginScreen.LoginForm> = (data) => {
-    console.log(data);
+    navigation.navigate('Main', {
+      screen: 'Home'
+    })
   }
 
   return (

@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Octicons';
 import { useTheme } from '@rneui/themed';
 import Login from 'screens/Login';
 import Register from 'screens/Register';
+import BottomNavigation from './BottomNavigation';
 
 const RootNavigatior: FC = ({ }) => {
   const { Navigator, Group, Screen } = createNativeStackNavigator<iNavigator.RootParamList>();
@@ -45,6 +46,16 @@ const RootNavigatior: FC = ({ }) => {
       <Screen options={{title: ''}} name="GetStart" component={GetStart} />
       <Screen options={{title: ''}} name="Login" component={Login} />
       <Screen options={{title: ''}} name="Register" component={Register} />
+
+      <Group>
+        <Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Main"
+          component={BottomNavigation}
+        />
+      </Group>
     </Navigator>
   )
 }

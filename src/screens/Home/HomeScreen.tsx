@@ -1,7 +1,9 @@
+
 import { Text } from "@rneui/themed";
 import Main from "components/templates/Main";
 import React, {FC} from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
+import EmptyTask from "./components/EmptyTask";
 import { useStyles } from "./styles";
 
 const HomeScreen: FC = () => {
@@ -10,7 +12,7 @@ const HomeScreen: FC = () => {
   return (
     <Main>
       <ScrollView style={styles.body}>
-        <Text>What do you want to do today?</Text>
+        <EmptyTask />
       </ScrollView>
     </Main>
   )
