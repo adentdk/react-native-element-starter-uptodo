@@ -1,4 +1,4 @@
-import FormControl from "components/molecules/FormControl";
+import FormControl from "design-system/molecules/FormControl";
 import React, { FC, Fragment, useRef } from "react";
 import { UseFormReturn, SubmitHandler } from "react-hook-form";
 import { TextInput } from "react-native";

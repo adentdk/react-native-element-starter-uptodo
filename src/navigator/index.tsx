@@ -37,7 +37,7 @@ const Navigator: FC = () => {
         dark: theme.mode === "dark",
         colors: {
           primary: theme.colors.primary,
-          card: theme.colors.background,
+          card: theme.colors.card,
           background: theme.colors.background,
           text: theme.colors.black,
           border: theme.colors.greyOutline,

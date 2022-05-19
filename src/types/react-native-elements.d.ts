@@ -8,18 +8,31 @@ declare module '@rneui/themed' {
     bold?: boolean;
     fontFamily?: FontFamily;
     lg?: boolean;
+    xl?: boolean;
     lgStyle?: StyleProp<TextStyle>;
     center?: boolean;
     color?: string;
+  }
+
+  export interface BottomSheetProps {
+    children: React.ReactNode;
+  }
+
+  export interface Colors {
+    card: string;
   }
 
   export interface Theme {
     headerHeight?: number;
     screenWithHeader?: number;
     screenWithTwoHeader?: number;
+    fontFamilies?: {
+      [key in FontFamily]?: string;
+    }
   }
 
   export interface FullTheme {
     Text: Partial<TextProps>;
+    BottomSheet: Partial<BottomSheetProps>;
   }
 }

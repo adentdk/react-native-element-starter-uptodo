@@ -3,7 +3,7 @@ import { Text } from '@rneui/themed';
 
 import Logo from '@assets/svg-icons/Logo.svg'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Main from 'components/templates/Main/Main';
+import Main from 'design-system/templates/Main/Main';
 
 interface Props extends NativeStackScreenProps<iNavigator.RootParamList, 'Intro'> { }
 

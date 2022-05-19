@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useLayoutEffect, useRef } from 'react';
-import Main from '@components/templates/Main';
+import Main from 'design-system/templates/Main';
 import useOnBoarding from './useOnBoarding';
 import { BackHandler, FlatList, ScrollView, View } from 'react-native';
 import { Button, makeStyles, Text } from '@rneui/themed';

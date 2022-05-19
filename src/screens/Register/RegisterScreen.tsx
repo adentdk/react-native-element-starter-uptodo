@@ -1,6 +1,6 @@
 import { Button, makeStyles, Text, Icon, useTheme } from '@rneui/themed';
-import HorizontalLine from 'components/atoms/HorizontalLine';
-import Main from 'components/templates/Main';
+import HorizontalLine from 'design-system/atoms/HorizontalLine';
+import Main from 'design-system/templates/Main';
 import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Platform, ScrollView, View } from 'react-native';
