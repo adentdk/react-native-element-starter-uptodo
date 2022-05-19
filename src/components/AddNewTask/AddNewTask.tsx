@@ -13,6 +13,7 @@ import TimerIcon from '@assets/icons/timer.svg';
 
 import FormControl from 'design-system/molecules/FormControl';
 import CalendarPicker from 'components/CalendarPicker';
+import { Controller } from 'react-hook-form';
 
 const AddNewTask: FC = () => {
   const { theme } = useTheme();
@@ -97,7 +98,13 @@ const AddNewTask: FC = () => {
         </View>
       </BottomSheet>
 
-      <CalendarPicker visible={isCalendarPickerVisible} onDismiss={toggleCalendarPickerVisibility} />
+      <Controller
+        name='date'
+        control={addNewTaskForm.control}
+        render={({field: {onChange, value}}) => (
+          <CalendarPicker visible={isCalendarPickerVisible} onDismiss={toggleCalendarPickerVisibility} value={value} onSelect={onChange} />
+        )}
+      />
     </Fragment>
   )
 }

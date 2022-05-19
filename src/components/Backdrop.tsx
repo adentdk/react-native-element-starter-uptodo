@@ -1,4 +1,5 @@
 import { makeStyles } from '@rneui/themed';
+import { addAlpha } from 'helpers/colors';
 import React, { FC } from 'react';
 import { Pressable } from 'react-native';
 
@@ -15,8 +16,7 @@ const Backdrop: FC<Props> = (props) => {
 
 const useStyles = makeStyles(theme => ({
   backdrop: {
-    backgroundColor: theme.colors?.background,
-    opacity: 0.5,
+    backgroundColor: addAlpha(theme.mode === 'dark' ? theme.colors?.white : theme.colors?.black, 0.7),
     position: 'absolute',
     top: 0,
     left: 0,

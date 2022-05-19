@@ -9,8 +9,13 @@ export const useStyles = makeStyles(theme => ({
   calendar: {
     minHeight: 326,
     borderRadius: 4,
+    backgroundColor: theme.colors?.card,
+    padding: 8,
   },
   calendarHeader: {
     color: theme.colors?.black,
-  }
+  },
+  calendarFooter: {
+    flexDirection: "row",
+  },
 }));

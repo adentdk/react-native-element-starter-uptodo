@@ -2,7 +2,7 @@ declare namespace iAddNewTask {
   interface AddNewTaskForm {
     title: string;
     description: string;
-    date: string;
+    date: Date;
     time: string;
     priority: string;
     category: string;

@@ -12,6 +12,7 @@ declare module '@rneui/themed' {
     lgStyle?: StyleProp<TextStyle>;
     center?: boolean;
     color?: string;
+    fontSize?: number;
   }
 
   export interface BottomSheetProps {

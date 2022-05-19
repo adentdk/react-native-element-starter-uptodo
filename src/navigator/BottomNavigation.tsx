@@ -29,7 +29,7 @@ const BottomNavigation = () => {
             backgroundColor: theme.colors.background,
           },
           tabBarStyle: {
-            height: 64,
+            height: 60,
             alignItems: 'center',
             backgroundColor: theme.colors.card,
             borderTopWidth: 0,
@@ -40,8 +40,8 @@ const BottomNavigation = () => {
           },
           tabBarItemStyle: [
             {
-              paddingBottom: 8,
               marginLeft: 16,
+              height: 48,
             },
             route.name === 'Focus' && {
               marginLeft: 92,
