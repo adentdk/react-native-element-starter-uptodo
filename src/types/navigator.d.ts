@@ -1,3 +1,4 @@
+
 declare namespace iNavigator {
   type BottomParamList = {
     Home: undefined;
@@ -16,5 +17,5 @@ declare namespace iNavigator {
     Main: {
       screen: keyof BottomParamList;
     };
-  }
+  };
 }
