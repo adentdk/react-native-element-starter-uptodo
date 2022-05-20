@@ -1,3 +1,4 @@
+import { ControllerProps } from "react-hook-form";
 import { CalendarProps } from "react-native-calendars";
 
 declare namespace iCalendarPicker {
@@ -14,6 +15,10 @@ declare namespace iCalendarPicker {
 
   interface Ref {
     togglePickerVisibility: () => void;
+  }
+
+  interface PropControl extends Omit<Props, 'ref' | 'value'> {
+    formProps: Omit<ControllerProps<any>, 'render'>
   }
 }
 

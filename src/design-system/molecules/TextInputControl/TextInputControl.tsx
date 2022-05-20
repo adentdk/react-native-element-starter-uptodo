@@ -1,6 +1,6 @@
 import { Input, InputProps, makeStyles, useTheme } from '@rneui/themed';
 import { addAlpha } from 'helpers/colors';
-import React, { FC, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { Controller, ControllerProps } from 'react-hook-form'
 import { TextInput } from 'react-native';
 
@@ -10,7 +10,7 @@ interface Props extends Omit<InputProps, 'ref' | 'value'> {
 
 const TextInputControl = forwardRef<TextInput, Props>(({ formProps, labelStyle, inputContainerStyle, placeholderTextColor, onChangeText, onBlur, ...props }, ref) => {
   const styles = useStyles();
-  const {theme} = useTheme()
+  const { theme } = useTheme()
 
   const onChangeTextHandler = (text: string) => {
     if (onChangeText) {
@@ -27,7 +27,7 @@ const TextInputControl = forwardRef<TextInput, Props>(({ formProps, labelStyle, 
   return (
     <Controller
       {...formProps}
-      render={({ field: { value, onChange, onBlur }, fieldState: {error} }) => (
+      render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
         <Input
           ref={ref}
           {...props}
