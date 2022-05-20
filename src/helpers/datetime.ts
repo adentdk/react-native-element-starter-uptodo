@@ -41,8 +41,11 @@ export const getFormattedDateJson = (date: Date) => {
 export const getTimeFromDate = (date: Date) => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
 
-  return `${hours}:${minutes}`;
+  const hours12 = hours % 12;
+
+  return `${hours12.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${ampm}`;
 };
 
 
@@ -55,11 +58,11 @@ export const getTimeJson = (time: string) => {
     hours12: parseInt(hours, 10) % 12,
     hours24: ampm === 'PM' ? parseInt(hours, 10) + 12 : parseInt(hours, 10),
     minutes: parseInt(minutes, 10),
-    ampm,
+    ampm: ampm || parseInt(hours, 10) >= 12 ? 'PM' : 'AM',
   };
 };
 
-export const getFormattedTime = (time: string, format = 'HH:mm') => {
+export const getFormattedTime = (time: string, format = 'HH:mm tt') => {
   const { hours12, hours24, minutes, ampm } = getTimeJson(time);
 
   return format

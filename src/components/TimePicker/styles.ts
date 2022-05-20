@@ -7,20 +7,35 @@ export const useStyles = makeStyles(theme => ({
     alignItems: "center",
   },
   timepicker: {
-    minHeight: 326,
+    minHeight: 254,
     borderRadius: 4,
     backgroundColor: theme.colors?.card,
-    padding: 8,
+    padding: 10,
   },
   timepickerHeader: {
     borderBottomWidth: 1,
     borderBottomColor: theme.colors?.greyOutline,
-    paddingBottom: 10,
+    paddingBottom: 20,
+    paddingTop: 10,
   },
   timepickerBody: {
     flex: 1,
+    flexDirection: "row",
+    paddingVertical: 21,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  hourPicker: {
+    marginRight: 13,
+  },
+  minutePicker: {
+    marginLeft: 14,
+    marginRight: 16,
   },
   timepickerFooter: {
     flexDirection: "row",
+  },
+  scrollInput: {
+    width: 64,
   },
 }));

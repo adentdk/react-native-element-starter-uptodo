@@ -1,9 +1,8 @@
-import { Button, makeStyles, Text, Icon, useTheme } from '@rneui/themed';
-import HorizontalLine from 'design-system/atoms/HorizontalLine';
+import { Button, Text, useTheme } from '@rneui/themed';
 import Main from 'design-system/templates/Main';
 import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Platform, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import RegisterForm from './components/RegisterForm';
 import { useStyles } from './styles';
 import { iRegisterScreen } from './types';

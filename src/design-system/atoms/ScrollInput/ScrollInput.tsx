@@ -1,5 +1,5 @@
 import { Text, useTheme } from '@rneui/themed';
-import React, { FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent, TouchableOpacity, View } from 'react-native';
 import { useStyles } from './styles';
 import { iScrollInput } from './types';
@@ -17,6 +17,7 @@ const ScrollInput: FC<iScrollInput.Props> = ({
   const styles = useStyles();
 
   const [dataArray, setDataArray] = useState<ValueLabel[]>(items);
+  const [renderTimes, setRenderTimes] = useState(0);
 
   const flatlistRef = useRef<FlatList>(null);
 
@@ -39,7 +40,7 @@ const ScrollInput: FC<iScrollInput.Props> = ({
   });
 
   const scrollToInitialValue = useCallback(() => {
-    const activeIndex = items.findIndex(item => item.value === selectedValue);
+    const activeIndex = dataArray.findIndex(item => item.value === selectedValue);
 
     if (activeIndex === -1) {
       return;
@@ -47,10 +48,10 @@ const ScrollInput: FC<iScrollInput.Props> = ({
 
     flatlistRef.current?.scrollToIndex({
       index: activeIndex,
-      animated: true,
+      animated: false,
       viewOffset: itemHeight,
     });
-  }, [selectedValue, items]);
+  }, [selectedValue, dataArray]);
 
   const onScroll = useCallback(({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
 
@@ -81,21 +82,40 @@ const ScrollInput: FC<iScrollInput.Props> = ({
     }
 
     currentYOffset.current = offsetY
-  }, [itemHeight])
+  }, [itemHeight]);
 
-  useLayoutEffect(() => {
-    scrollToInitialValue();
-  }, []);
-
+  
   useEffect(() => {
     (() => {
       if (infinite) {
         setDataArray([...items, ...items, ...items])
       } else {
-        setDataArray([{value: '', label: ''}, ...items, {value: '', label: ''}]);
+        setDataArray([
+          {value: '', label: ''},
+          ...items,
+          {value: '', label: ''},
+          {value: '', label: ''}
+        ]);
       }
+
+      setRenderTimes(renderTimes + 1);
     })()
   }, [])
+  
+  useEffect(() => {
+
+    let success = false;
+    const interval = setInterval(() => {
+      if (renderTimes === 1 && !success) {
+        scrollToInitialValue();
+        success = true;
+      }
+    }, 250);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [renderTimes]);
 
   return (
     <View style={[styles.container, {height: itemHeight * 3}, containerStyle]}>
@@ -108,10 +128,10 @@ const ScrollInput: FC<iScrollInput.Props> = ({
           const { height } = nativeEvent.layout;
           viewabilityConfig.current.minimumViewTime = height / 2;
         }}
-        pagingEnabled
         snapToAlignment="center"
+        snapToInterval={itemHeight}
         scrollEventThrottle={16}
-        decelerationRate="fast"
+        decelerationRate="normal"
         viewabilityConfig={viewabilityConfig.current}
         onViewableItemsChanged={onViewableItemsChanged.current}
         renderItem={({ item, index }) => (
@@ -147,7 +167,9 @@ const ScrollInput: FC<iScrollInput.Props> = ({
           </TouchableOpacity>
         )}
         keyExtractor={(item, index) => index.toString()}
-        onScrollToIndexFailed={() => {}}
+        onScrollToIndexFailed={(e) => {
+          console.log('error', e.index)
+        }}
       />
     </View>
   )

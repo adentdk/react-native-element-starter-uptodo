@@ -1,7 +1,7 @@
-import { Button, Text, useTheme } from '@rneui/themed';
+import { Button, Text } from '@rneui/themed';
 import Backdrop from 'design-system/atoms/Backdrop';
 import ScrollInput from 'design-system/atoms/ScrollInput';
-import { getTimeFromDate } from 'helpers/datetime';
+import { getFormattedTime, getTimeFromDate } from 'helpers/datetime';
 import React, { forwardRef, Fragment, useImperativeHandle } from 'react';
 import {Modal, useWindowDimensions, View } from 'react-native';
 
@@ -10,7 +10,7 @@ import { iTimePicker } from './types';
 import { useTimePicker } from './useTimePicker';
 
 const TimePicker = forwardRef<iTimePicker.Ref, iTimePicker.Props>(({
-  value = getTimeFromDate(new Date()),
+  value = getFormattedTime(getTimeFromDate(new Date())),
   visible,
   finishText = 'Save',
   cancelText = 'Cancel',
@@ -19,7 +19,6 @@ const TimePicker = forwardRef<iTimePicker.Ref, iTimePicker.Props>(({
   onDismiss,
   onSelect,
 }, ref) => {
-  const { theme } = useTheme();
   const styles = useStyles();
 
   const { width: screenWidth } = useWindowDimensions();
@@ -29,6 +28,8 @@ const TimePicker = forwardRef<iTimePicker.Ref, iTimePicker.Props>(({
     minutes,
     ampm,
     hourItems,
+    minuteItems,
+    ampmItems,
     togglePickerVisibility,
     onSaveTime,
     setHours,
@@ -54,9 +55,11 @@ const TimePicker = forwardRef<iTimePicker.Ref, iTimePicker.Props>(({
               <View style={styles.timepickerHeader}>
                 <Text  center lg>Choose Time</Text>
               </View>
-
               <View style={styles.timepickerBody}>
-                <ScrollInput selectedValue={hours} onSelect={setHours} items={hourItems} />
+                <ScrollInput selectedValue={hours} onSelect={setHours} items={hourItems} containerStyle={[styles.scrollInput, styles.hourPicker]} />
+                <Text fontFamily="bold" xl>:</Text>
+                <ScrollInput selectedValue={minutes} onSelect={setMinutes} items={minuteItems} containerStyle={[styles.scrollInput, styles.minutePicker]} />
+                <ScrollInput selectedValue={ampm} onSelect={setAmpm} items={ampmItems} containerStyle={styles.scrollInput} />
               </View>
 
               <View style={styles.timepickerFooter}>
