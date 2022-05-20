@@ -13,6 +13,7 @@ import TimerIcon from '@assets/icons/timer.svg';
 
 import FormControl from 'design-system/molecules/FormControl';
 import CalendarPicker from 'components/CalendarPicker';
+import TimePicker from 'components/TimePicker';
 import { Controller } from 'react-hook-form';
 
 const AddNewTask: FC = () => {
@@ -25,10 +26,12 @@ const AddNewTask: FC = () => {
     taskInputRef,
     descriptionInputRef,
     isCalendarPickerVisible,
+    isTimePickerVisible,
     onTaskInputSubmit,
     onBottomSheetOpen,
     toggleFormVisibility,
     toggleCalendarPickerVisibility,
+    toggleTimePickerVisibility,
   } = useAddNewTask();
   return (
     <Fragment>
@@ -102,7 +105,32 @@ const AddNewTask: FC = () => {
         name='date'
         control={addNewTaskForm.control}
         render={({field: {onChange, value}}) => (
-          <CalendarPicker visible={isCalendarPickerVisible} onDismiss={toggleCalendarPickerVisibility} value={value} onSelect={onChange} />
+          <CalendarPicker
+            visible={isCalendarPickerVisible}
+            onDismiss={toggleCalendarPickerVisibility}
+            value={value}
+            onCancel={toggleCalendarPickerVisibility}
+            onFinish={() => {
+              toggleCalendarPickerVisibility();
+              toggleTimePickerVisibility();
+            }}
+            onSelect={onChange}
+          />
+        )}
+      />
+
+      <Controller
+        name='time'
+        control={addNewTaskForm.control}
+        render={({field: {onChange, value}}) => (
+          <TimePicker
+            visible={isTimePickerVisible}
+            onDismiss={toggleTimePickerVisibility}
+            value={value}
+            onCancel={toggleTimePickerVisibility}
+            onFinish={toggleTimePickerVisibility}
+            onSelect={onChange}
+          />
         )}
       />
     </Fragment>

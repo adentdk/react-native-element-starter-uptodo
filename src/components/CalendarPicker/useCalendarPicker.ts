@@ -1,7 +1,16 @@
+import { getFormattedDate } from "helpers/datetime";
 import { useEffect, useRef, useState } from "react";
+import { DateData } from "react-native-calendars";
 import { iCalendarPicker } from "./types";
 
-export const useCalendarPicker = ({visible = false}) => {
+interface Params {
+  visible?: boolean;
+  value: Date;
+  onSelect?: (date: Date, fdate: string) => void;
+  onFinish?: () => void;
+}
+
+export const useCalendarPicker = ({visible = false, value, onSelect, onFinish}: Params) => {
   const [isPickerVisible, setIsPickerVisible] = useState(visible);
 
   const togglePickerVisibility = () => {
@@ -9,6 +18,26 @@ export const useCalendarPicker = ({visible = false}) => {
   };
 
   const pickerRef = useRef<iCalendarPicker.Ref>(null);
+
+  const onDayPress = (day: DateData) => {
+    if (onSelect) {
+      onSelect(new Date(day.dateString), day.dateString);
+    }
+  };
+
+  const onSaveDate = () => {
+
+    if (onSelect) {
+      onSelect(value, getFormattedDate(value));
+    }
+
+    if (onFinish) {
+      onFinish();
+    }
+    if (!visible) {
+      togglePickerVisibility();
+    }
+  };
 
   useEffect(() => {
     if (visible !== isPickerVisible) {
@@ -19,6 +48,8 @@ export const useCalendarPicker = ({visible = false}) => {
   return {
     isPickerVisible,
     pickerRef,
-    togglePickerVisibility
+    togglePickerVisibility,
+    onDayPress,
+    onSaveDate
   }
 };

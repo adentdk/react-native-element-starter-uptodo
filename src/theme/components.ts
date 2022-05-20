@@ -1,7 +1,7 @@
 import { ThemeOptions } from "@rneui/themed";
 import { fontFamilies } from "./font";
 
-const Text: ThemeOptions['Text'] = ({ fontFamily, fontSize, lg, xl, center, color }) => {
+const Text: ThemeOptions['Text'] = ({ fontFamily, fontSize, lg, xl, xxl, center, color }) => {
   return {
     h1Style: {
       fontFamily: fontFamilies.bold,
@@ -24,6 +24,9 @@ const Text: ThemeOptions['Text'] = ({ fontFamily, fontSize, lg, xl, center, colo
       },
       xl && {
         fontSize: 20,
+      },
+      xxl && {
+        fontSize: 24,
       },
       center && {
         textAlign: "center",

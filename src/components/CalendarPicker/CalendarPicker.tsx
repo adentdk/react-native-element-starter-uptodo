@@ -1,9 +1,9 @@
 import { Button, Text, useTheme } from '@rneui/themed';
-import Backdrop from 'components/Backdrop';
-import { getFormattedDate, getFormattedDateJson } from 'helpers/date';
+import Backdrop from 'design-system/atoms/Backdrop';
+import { getFormattedDate, getFormattedDateJson } from 'helpers/datetime';
 import React, { forwardRef, Fragment, useImperativeHandle } from 'react';
-import { Dimensions, Modal, useWindowDimensions, View } from 'react-native';
-import { Calendar, DateData } from 'react-native-calendars';
+import {Modal, useWindowDimensions, View } from 'react-native';
+import { Calendar } from 'react-native-calendars';
 
 import ArrowLeftIcon from '@assets/icons/arrow-left.svg';
 import ArrowRightIcon from '@assets/icons/arrow-right.svg';
@@ -15,8 +15,12 @@ import { useCalendarPicker } from './useCalendarPicker';
 const CalendarPicker = forwardRef<iCalendarPicker.Ref, iCalendarPicker.Props>(({
   value = new Date(),
   visible,
+  finishText = 'Save',
+  cancelText = 'Cancel',
+  onFinish,
+  onCancel,
   onDismiss,
-  onSelect
+  onSelect,
 }, ref) => {
   const { theme } = useTheme();
   const styles = useStyles();
@@ -24,14 +28,10 @@ const CalendarPicker = forwardRef<iCalendarPicker.Ref, iCalendarPicker.Props>(({
   const { width: screenWidth } = useWindowDimensions();
   const {
     isPickerVisible,
-    togglePickerVisibility
-  } = useCalendarPicker({ visible });
-
-  const onDayPress = (day: DateData) => {
-    if (onSelect) {
-      onSelect(new Date(day.dateString), day.dateString);
-    }
-  };
+    togglePickerVisibility,
+    onDayPress,
+    onSaveDate,
+  } = useCalendarPicker({ visible, value, onSelect, onFinish });
 
   useImperativeHandle(ref, () => ({
     togglePickerVisibility
@@ -84,6 +84,7 @@ const CalendarPicker = forwardRef<iCalendarPicker.Ref, iCalendarPicker.Props>(({
                 }}
                 removeClippedSubviews
                 onDayPress={onDayPress}
+                current={getFormattedDate(value)}
                 markedDates={{
                   [getFormattedDate(value)]: {
                     selected: true,
@@ -92,9 +93,9 @@ const CalendarPicker = forwardRef<iCalendarPicker.Ref, iCalendarPicker.Props>(({
                 }}
               />
               <View style={styles.calendarFooter}>
-                <Button title="Cancel" type="clear" containerStyle={{flex: 1}} />
+                <Button onPress={onCancel} title={cancelText} type="clear" containerStyle={{flex: 1}} />
                 <View style={{width: 5}} />
-                <Button title="Choose Time" containerStyle={{flex: 1}} />
+                <Button onPress={onSaveDate} title={finishText} containerStyle={{flex: 1}} />
               </View>
 
             </View>

@@ -9,6 +9,7 @@ declare module '@rneui/themed' {
     fontFamily?: FontFamily;
     lg?: boolean;
     xl?: boolean;
+    xxl?: boolean;
     lgStyle?: StyleProp<TextStyle>;
     center?: boolean;
     color?: string;

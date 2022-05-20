@@ -6,6 +6,10 @@ declare namespace iCalendarPicker {
     visible?: boolean;
     onDismiss?: () => void;
     onSelect?: (date: Date, fdate: string) => void;
+    finishText?: string;
+    cancelText?: string;
+    onFinish?: () => void;
+    onCancel?: () => void;
   }
 
   interface Ref {

@@ -6,6 +6,7 @@ import { iAddNewTask } from "./types";
 export const useAddNewTask = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isCalendarPickerVisible, setIsCalendarPickerVisible] = useState(false);
+  const [isTimePickerVisible, setIsTimePickerVisible] = useState(false);
 
   const taskInputRef = useRef<TextInput>(null);
   const descriptionInputRef = useRef<TextInput>(null);
@@ -22,6 +23,10 @@ export const useAddNewTask = () => {
 
   const toggleCalendarPickerVisibility = () => {
     setIsCalendarPickerVisible(prevState => !prevState);
+  };
+
+  const toggleTimePickerVisibility = () => {
+    setIsTimePickerVisible(prevState => !prevState);
   };
 
   const onBottomSheetOpen = () => {
@@ -57,10 +62,12 @@ export const useAddNewTask = () => {
     taskInputRef,
     descriptionInputRef,
     isCalendarPickerVisible,
+    isTimePickerVisible,
     setIsFormVisible,
     toggleFormVisibility,
     onBottomSheetOpen,
     onTaskInputSubmit,
-    toggleCalendarPickerVisibility
+    toggleCalendarPickerVisibility,
+    toggleTimePickerVisibility,
   };
 }

@@ -38,6 +38,37 @@ export const getFormattedDateJson = (date: Date) => {
   };
 };
 
+export const getTimeFromDate = (date: Date) => {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  return `${hours}:${minutes}`;
+};
+
+
+export const getTimeJson = (time: string) => {
+  const [timeOnly, ampm] = time.split(' ');
+
+  const [hours, minutes] = timeOnly.split(':');
+
+  return {
+    hours12: parseInt(hours, 10) % 12,
+    hours24: ampm === 'PM' ? parseInt(hours, 10) + 12 : parseInt(hours, 10),
+    minutes: parseInt(minutes, 10),
+    ampm,
+  };
+};
+
+export const getFormattedTime = (time: string, format = 'HH:mm') => {
+  const { hours12, hours24, minutes, ampm } = getTimeJson(time);
+
+  return format
+    .replace('HH', hours24.toString().padStart(2, '0'))
+    .replace('hh', hours12.toString().padStart(2, '0'))
+    .replace('mm', minutes.toString().padStart(2, '0'))
+    .replace('tt', ampm);
+};
+
 export const timeAgo = (date: Date) => {
   const diff = Date.now() - date.getTime();
   const seconds = Math.floor(diff / 1000);
