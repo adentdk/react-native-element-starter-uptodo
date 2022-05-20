@@ -1,0 +1,1 @@
+export {default, type TextInputControlProps} from './TextInputControl'

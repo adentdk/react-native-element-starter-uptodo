@@ -8,7 +8,7 @@ interface Props extends Omit<InputProps, 'ref' | 'value'> {
   formProps: Omit<ControllerProps<any>, 'render'>
 }
 
-const FormControl = forwardRef<TextInput, Props>(({ formProps, labelStyle, inputContainerStyle, placeholderTextColor, onChangeText, onBlur, ...props }, ref) => {
+const TextInputControl = forwardRef<TextInput, Props>(({ formProps, labelStyle, inputContainerStyle, placeholderTextColor, onChangeText, onBlur, ...props }, ref) => {
   const styles = useStyles();
   const {theme} = useTheme()
 
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export type {
-  Props as FormControlProps
+  Props as TextInputControlProps
 }
 
-export default FormControl;
+export default TextInputControl;

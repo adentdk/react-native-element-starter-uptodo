@@ -1,1 +1,1 @@
-export {default, type FormControlProps} from './FormControl';
+export {default, type TextInputControlProps} from './TextInputControl';

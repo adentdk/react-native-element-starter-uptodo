@@ -11,9 +11,9 @@ import SendIcon from '@assets/icons/send.svg';
 import TagIcon from '@assets/icons/tag.svg';
 import TimerIcon from '@assets/icons/timer.svg';
 
-import FormControl from 'design-system/molecules/FormControl';
-import CalendarPicker from 'components/CalendarPicker';
-import TimePicker from 'components/TimePicker';
+import TextInputControl from 'design-system/molecules/TextInputControl';
+import CalendarPicker from 'design-system/molecules/CalendarPicker';
+import TimePicker from 'design-system/molecules/TimePicker';
 import { Controller } from 'react-hook-form';
 
 const AddNewTask: FC = () => {
@@ -68,7 +68,7 @@ const AddNewTask: FC = () => {
           <Text fontFamily="bold" xl style={styles.bottomSheetTitle}>Add Task</Text>
           
           <Fragment>
-            <FormControl
+            <TextInputControl
               placeholder="Title"
               ref={taskInputRef}
               onSubmitEditing={onTaskInputSubmit}
@@ -77,7 +77,7 @@ const AddNewTask: FC = () => {
                 name: 'title',
               }}
             />
-            <FormControl
+            <TextInputControl
               placeholder="Description"
               ref={descriptionInputRef}
               formProps={{

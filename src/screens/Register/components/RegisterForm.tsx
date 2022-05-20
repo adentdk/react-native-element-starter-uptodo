@@ -1,4 +1,4 @@
-import FormControl from "design-system/molecules/FormControl";
+import TextInputControl from "design-system/molecules/TextInputControl";
 import React, { FC, Fragment, useRef } from "react";
 import { UseFormReturn, SubmitHandler } from "react-hook-form";
 import { TextInput } from "react-native";
@@ -25,7 +25,7 @@ const RegisterForm: FC<Props> = ({ registerForm, onSubmit }) => {
 
   return (
     <Fragment>
-      <FormControl
+      <TextInputControl
         containerStyle={styles.registerForm}
         onSubmitEditing={onEmailSubmitEditing}
         label={'Email'}
@@ -43,7 +43,7 @@ const RegisterForm: FC<Props> = ({ registerForm, onSubmit }) => {
         }}
       />
 
-      <FormControl
+      <TextInputControl
         ref={passwordRef}
         containerStyle={styles.registerForm}
         onSubmitEditing={onPasswordSubmitEditing}
@@ -67,7 +67,7 @@ const RegisterForm: FC<Props> = ({ registerForm, onSubmit }) => {
         secureTextEntry
       />
 
-      <FormControl
+      <TextInputControl
         ref={confirmPasswordRef}
         containerStyle={styles.registerForm}
         inputStyle={{ letterSpacing: 8 }}

@@ -1,5 +1,5 @@
 import { Text } from "@rneui/themed";
-import FormControl from "design-system/molecules/FormControl";
+import TextInputControl from "design-system/molecules/TextInputControl";
 import React, { FC, Fragment, useRef } from "react";
 import { UseFormReturn, SubmitHandler } from "react-hook-form";
 import { TextInput } from "react-native";
@@ -21,7 +21,7 @@ const LoginForm: FC<Props> = ({ loginForm, onSubmit }) => {
 
   return (
     <Fragment>
-      <FormControl
+      <TextInputControl
         containerStyle={styles.loginForm}
         onSubmitEditing={onEmailSubmitEditing}
         label={'Email'}
@@ -39,7 +39,7 @@ const LoginForm: FC<Props> = ({ loginForm, onSubmit }) => {
         }}
       />
 
-      <FormControl
+      <TextInputControl
         ref={passwordRef}
         containerStyle={styles.loginForm}
         inputStyle={{ letterSpacing: 8 }}
