@@ -11,11 +11,10 @@ import SendIcon from '@assets/icons/send.svg';
 import TagIcon from '@assets/icons/tag.svg';
 import TimerIcon from '@assets/icons/timer.svg';
 
-import TextInputControl from 'design-system/molecules/TextInputControl';
-import CalendarPicker from 'design-system/molecules/CalendarPicker';
-import TimePicker from 'design-system/molecules/TimePicker';
-import { Controller } from 'react-hook-form';
-
+import TextInputControl from '@design-system/molecules/TextInputControl';
+import { CalendarPickerControl } from '@design-system/molecules/CalendarPicker';
+import { TimePickerControl } from '@design-system/molecules/TimePicker';
+import { CategoryPickerControl } from '@design-system/molecules/CategoryPicker';
 const AddNewTask: FC = () => {
   const { theme } = useTheme();
   const styles = useStyles();
@@ -27,11 +26,13 @@ const AddNewTask: FC = () => {
     descriptionInputRef,
     isCalendarPickerVisible,
     isTimePickerVisible,
+    isCategoryPickerVisible,
     onTaskInputSubmit,
     onBottomSheetOpen,
     toggleFormVisibility,
     toggleCalendarPickerVisibility,
     toggleTimePickerVisibility,
+    toggleCategoryPickerVisibility,
   } = useAddNewTask();
   return (
     <Fragment>
@@ -66,7 +67,7 @@ const AddNewTask: FC = () => {
       >
         <View style={styles.bottomSheet}>
           <Text fontFamily="bold" xl style={styles.bottomSheetTitle}>Add Task</Text>
-          
+
           <Fragment>
             <TextInputControl
               placeholder="Title"
@@ -91,7 +92,10 @@ const AddNewTask: FC = () => {
             <Pressable onPress={toggleCalendarPickerVisibility}>
               <TimerIcon fill={theme.colors.black} style={styles.bottomSheetFooterButton} />
             </Pressable>
-            <TagIcon fill={theme.colors.black} style={styles.bottomSheetFooterButton} />
+
+            <Pressable onPress={toggleCategoryPickerVisibility}>
+              <TagIcon fill={theme.colors.black} style={styles.bottomSheetFooterButton} />
+            </Pressable>
             <FlagIcon fill={theme.colors.black} style={styles.bottomSheetFooterButton} />
 
             <View style={{ flex: 2 / 1 }} />
@@ -101,37 +105,40 @@ const AddNewTask: FC = () => {
         </View>
       </BottomSheet>
 
-      <Controller
-        name='date'
-        control={addNewTaskForm.control}
-        render={({field: {onChange, value}}) => (
-          <CalendarPicker
-            visible={isCalendarPickerVisible}
-            onDismiss={toggleCalendarPickerVisibility}
-            value={value}
-            onCancel={toggleCalendarPickerVisibility}
-            onFinish={() => {
-              toggleCalendarPickerVisibility();
-              toggleTimePickerVisibility();
-            }}
-            onSelect={onChange}
-          />
-        )}
+      <CalendarPickerControl
+        formProps={{
+          control: addNewTaskForm.control,
+          name: 'date',
+        }}
+        visible={isCalendarPickerVisible}
+        onDismiss={toggleCalendarPickerVisibility}
+        onCancel={toggleCalendarPickerVisibility}
+        onFinish={() => {
+          toggleCalendarPickerVisibility();
+          toggleTimePickerVisibility();
+        }}
       />
 
-      <Controller
-        name='time'
-        control={addNewTaskForm.control}
-        render={({field: {onChange, value}}) => (
-          <TimePicker
-            visible={isTimePickerVisible}
-            onDismiss={toggleTimePickerVisibility}
-            value={value}
-            onCancel={toggleTimePickerVisibility}
-            onFinish={toggleTimePickerVisibility}
-            onSelect={onChange}
-          />
-        )}
+      <TimePickerControl
+        formProps={{
+          control: addNewTaskForm.control,
+          name: 'time',
+        }}
+        visible={isTimePickerVisible}
+        onDismiss={toggleTimePickerVisibility}
+        onCancel={toggleTimePickerVisibility}
+        onFinish={toggleTimePickerVisibility}
+      />
+
+      <CategoryPickerControl
+        formProps={{
+          control: addNewTaskForm.control,
+          name: 'category',
+        }}
+        visible={isCategoryPickerVisible}
+        onDismiss={toggleCategoryPickerVisibility}
+        onCancel={toggleCategoryPickerVisibility}
+        onFinish={toggleCategoryPickerVisibility}
       />
     </Fragment>
   )

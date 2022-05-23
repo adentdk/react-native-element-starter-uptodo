@@ -4,6 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
+    "experimentalDecorators": true,
     "jsx": "react-native",
     "lib": ["es2017"],
     "moduleResolution": "node",
@@ -14,7 +15,10 @@
     "paths": {
       "*": ["src/*"],
       "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
       "@design-system/*": ["src/design-system/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@model/*": ["src/db/model/*"],
       "@screens/*": ["src/screens/*"],
       "@theme/*": ["src/theme/*"],
     },

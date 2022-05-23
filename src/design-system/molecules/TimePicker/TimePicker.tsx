@@ -1,7 +1,7 @@
 import { Button, Text } from '@rneui/themed';
-import Backdrop from 'design-system/atoms/Backdrop';
-import ScrollInput from 'design-system/atoms/ScrollInput';
-import { getFormattedTime, getTimeFromDate } from 'helpers/datetime';
+import Backdrop from '@design-system/atoms/Backdrop';
+import ScrollInput from '@design-system/atoms/ScrollInput';
+import { getFormattedTime, getTimeFromDate } from '@helpers/datetime';
 import React, { forwardRef, Fragment, useImperativeHandle } from 'react';
 import {Modal, useWindowDimensions, View } from 'react-native';
 

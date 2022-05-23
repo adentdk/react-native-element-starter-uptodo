@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useLayoutEffect, useRef } from 'react';
-import Main from 'design-system/templates/Main';
+import Main from '@design-system/templates/Main';
 import useOnBoarding from './useOnBoarding';
 import { BackHandler, FlatList, ScrollView, View } from 'react-native';
 import { Button, makeStyles, Text } from '@rneui/themed';
-import { screenDimensions } from 'helpers/viewport';
-import { addAlpha } from 'helpers/colors';
+import { screenDimensions } from '@helpers/viewport';
+import { addAlpha } from '@helpers/colors';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useFocusEffect } from '@react-navigation/native';
 

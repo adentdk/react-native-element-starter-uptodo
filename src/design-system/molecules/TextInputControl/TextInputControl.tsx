@@ -1,5 +1,5 @@
 import { Input, InputProps, makeStyles, useTheme } from '@rneui/themed';
-import { addAlpha } from 'helpers/colors';
+import { addAlpha } from '@helpers/colors';
 import React, { forwardRef } from 'react';
 import { Controller, ControllerProps } from 'react-hook-form'
 import { TextInput } from 'react-native';

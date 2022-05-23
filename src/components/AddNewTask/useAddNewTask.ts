@@ -7,6 +7,8 @@ export const useAddNewTask = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isCalendarPickerVisible, setIsCalendarPickerVisible] = useState(false);
   const [isTimePickerVisible, setIsTimePickerVisible] = useState(false);
+  const [isCategoryPickerVisible, setIsCategoryPickerVisible] = useState(false);
+  const [isPriorityPickerVisible, setIsPriorityPickerVisible] = useState(false);
 
   const taskInputRef = useRef<TextInput>(null);
   const descriptionInputRef = useRef<TextInput>(null);
@@ -27,6 +29,14 @@ export const useAddNewTask = () => {
 
   const toggleTimePickerVisibility = () => {
     setIsTimePickerVisible(prevState => !prevState);
+  };
+
+  const toggleCategoryPickerVisibility = () => {
+    setIsCategoryPickerVisible(prevState => !prevState);
+  };
+
+  const togglePriorityPickerVisibility = () => {
+    setIsPriorityPickerVisible(prevState => !prevState);
   };
 
   const onBottomSheetOpen = () => {
@@ -63,11 +73,15 @@ export const useAddNewTask = () => {
     descriptionInputRef,
     isCalendarPickerVisible,
     isTimePickerVisible,
+    isCategoryPickerVisible,
+    isPriorityPickerVisible,
     setIsFormVisible,
     toggleFormVisibility,
     onBottomSheetOpen,
     onTaskInputSubmit,
     toggleCalendarPickerVisibility,
     toggleTimePickerVisibility,
+    toggleCategoryPickerVisibility,
+    togglePriorityPickerVisibility,
   };
 }

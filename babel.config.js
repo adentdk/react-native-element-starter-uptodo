@@ -10,6 +10,9 @@ module.exports = {
             tests: ['./tests/'],
             "@assets": "./src/assets",
             '@components': './src/components',
+            '@design-system': './src/design-system',
+            '@helpers': './src/helpers',
+            '@model': './src/db/model',
             "@screens": "./src/screens",
             "@theme": "./src/theme",
           }
@@ -21,6 +24,7 @@ module.exports = {
       "safe": false,
       "allowUndefined": true,
       "verbose": false
-    }]
+    }],
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
   ]
 };

@@ -1,5 +1,5 @@
 import { Button, Text, useTheme } from '@rneui/themed';
-import Main from 'design-system/templates/Main';
+import Main from '@design-system/templates/Main';
 import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ScrollView, View } from 'react-native';

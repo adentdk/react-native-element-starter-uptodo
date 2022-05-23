@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Button, makeStyles, Text } from '@rneui/themed';
-import Main from 'design-system/templates/Main';
+import Main from '@design-system/templates/Main';
 import React, { FC } from 'react';
 import { View } from 'react-native';
 

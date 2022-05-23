@@ -1,6 +1,6 @@
 import { Button, Text, useTheme } from '@rneui/themed';
-import Backdrop from 'design-system/atoms/Backdrop';
-import { getFormattedDate, getFormattedDateJson } from 'helpers/datetime';
+import Backdrop from '@design-system/atoms/Backdrop';
+import { getFormattedDate, getFormattedDateJson } from '@helpers/datetime';
 import React, { forwardRef, Fragment, useImperativeHandle } from 'react';
 import {Modal, useWindowDimensions, View } from 'react-native';
 import { Calendar } from 'react-native-calendars';

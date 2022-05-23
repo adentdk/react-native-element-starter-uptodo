@@ -1,5 +1,5 @@
 import { makeStyles, Text } from '@rneui/themed';
-import { addAlpha } from 'helpers/colors';
+import { addAlpha } from '@helpers/colors';
 import React, { FC } from 'react';
 import { View } from 'react-native';
 
