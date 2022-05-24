@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import { iCategoryCreate } from "./types";
 
 interface Params {
@@ -10,6 +11,8 @@ interface Params {
 export const useCategoryCreate = ({ visible = false, onFinish }: Params) => {
 
   const [isPickerVisible, setIsPickerVisible] = useState(visible);
+
+  const categoryCreateForm = useForm<iCategoryCreate.Form>();
 
   const togglePickerVisibility = () => {
     setIsPickerVisible(prevState => !prevState);
@@ -35,6 +38,7 @@ export const useCategoryCreate = ({ visible = false, onFinish }: Params) => {
 
   return {
     isPickerVisible,
+    categoryCreateForm,
     pickerRef,
     togglePickerVisibility,
     onSaveCategory,

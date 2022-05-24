@@ -3,19 +3,11 @@ import { makeStyles } from "@rneui/themed";
 export const useStyles = makeStyles(theme => ({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  categorycreate: {
-    minHeight: 254,
-    borderRadius: 4,
-    backgroundColor: theme.colors?.card,
-    padding: 10,
+    paddingHorizontal: 24,
+    backgroundColor: theme.colors?.background,
   },
   categorycreateHeader: {
-    borderBottomWidth: 1,
-    borderBottomColor: theme.colors?.greyOutline,
-    paddingBottom: 20,
+    paddingBottom: 26,
     paddingTop: 10,
   },
   categorycreateBody: {
@@ -24,5 +16,6 @@ export const useStyles = makeStyles(theme => ({
   },
   categorycreateFooter: {
     flexDirection: "row",
+    paddingBottom: 40,
   },
 }));

@@ -1,12 +1,13 @@
 import { Button, Text } from '@rneui/themed';
 import React, { forwardRef, Fragment, useImperativeHandle } from 'react';
 import { Modal, View } from 'react-native';
+import TextInputControl from '../TextInputControl';
 
 import { useStyles } from './styles';
 import { iCategoryCreate } from './types';
 import { useCategoryCreate } from './useCategoryCreate';
 
-const CategoryCreate = forwardRef<iCategoryCreate.Ref, iCategoryCreate.ComponentProps>(({
+const CategoryCreate = forwardRef<iCategoryCreate.Ref, iCategoryCreate.Props>(({
   visible,
   onFinish,
   onCancel
@@ -14,6 +15,7 @@ const CategoryCreate = forwardRef<iCategoryCreate.Ref, iCategoryCreate.Component
   const styles = useStyles();
 
   const {
+    categoryCreateForm,
     isPickerVisible,
     togglePickerVisibility,
     onSaveCategory,
@@ -30,19 +32,25 @@ const CategoryCreate = forwardRef<iCategoryCreate.Ref, iCategoryCreate.Component
         onCancel?.();
       }}>
         <View style={styles.container}>
-          <View
-            style={[
-              styles.categorycreate,
-            ]}
-          >
-            <View style={styles.categorycreateHeader}>
-              <Text center lg>Choose Category</Text>
-            </View>
 
-            <View style={styles.categorycreateFooter}>
-              <Button onPress={onSaveCategory} title={'a'} containerStyle={{ flex: 1 }} />
-            </View>
+          <View style={styles.categorycreateHeader}>
+            <Text xl>Create New Category</Text>
+          </View>
 
+          <View style={styles.categorycreateBody}>
+            <TextInputControl
+              formProps={{
+                control: categoryCreateForm.control,
+                name: 'name',
+              }}
+              label="Category name :"
+              placeholder="Enter category name"
+            />
+          </View>
+
+          <View style={styles.categorycreateFooter}>
+            <Button type="clear" onPress={onCancel} title={"Cancel"} containerStyle={{ flex: 1 }} />
+            <Button onPress={onSaveCategory} title={"Create Category"} containerStyle={{ flex: 1 }} />
           </View>
 
         </View>

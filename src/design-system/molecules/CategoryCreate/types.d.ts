@@ -13,17 +13,13 @@ declare namespace iCategoryCreate {
     togglePickerVisibility: () => void;
   }
 
-  interface CategoryModel extends Category {}
-
-  type ComposePropsInput = Props & RefAttributes<Ref>;
-
-  type ComposePropsOutput = ForwardRefExoticComponent<ComposePropsInput>;
-
-  type ComponentProps = Props & RefAttributes<Ref>;
-
-  interface PropControl extends Omit<Props, 'ref' | 'value'> {
-    formProps: Omit<ControllerProps<any>, 'render'>
+  interface Form {
+    name: string;
+    icon: string;
+    color: string;
   }
+
+  interface CategoryModel extends Category {}
 }
 
 export { iCategoryCreate };
