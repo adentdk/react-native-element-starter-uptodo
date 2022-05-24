@@ -1,5 +1,4 @@
-import { generateArray } from "helpers/array";
-import { getTimeJson } from "helpers/datetime";
+import { useTypedNavigation } from "hooks/navigation";
 import { useEffect, useRef, useState } from "react";
 import { iCategoryPicker } from "./types";
 
@@ -13,9 +12,16 @@ interface Params {
 export const useCategoryPicker = ({ visible = false, value, onSelect, onFinish }: Params) => {
 
   const [isPickerVisible, setIsPickerVisible] = useState(visible);
+  const [isFormAddVisible, setIsFormAddVisible] = useState(false);
+
+  const navigation = useTypedNavigation();
 
   const togglePickerVisibility = () => {
     setIsPickerVisible(prevState => !prevState);
+  };
+
+  const toggleFormAddVisibility = () => {
+    setIsFormAddVisible(prevState => !prevState);
   };
 
   const pickerRef = useRef<iCategoryPicker.Ref>(null);
@@ -34,6 +40,11 @@ export const useCategoryPicker = ({ visible = false, value, onSelect, onFinish }
     }
   };
 
+  const onCreateNewCategory = () => {
+    navigation.navigate('CreateCategory');
+  };
+
+
   useEffect(() => {
     if (visible !== isPickerVisible) {
       setIsPickerVisible(visible);
@@ -42,8 +53,11 @@ export const useCategoryPicker = ({ visible = false, value, onSelect, onFinish }
 
   return {
     isPickerVisible,
+    isFormAddVisible,
     pickerRef,
     togglePickerVisibility,
-    onSaveCategory
+    toggleFormAddVisibility,
+    onSaveCategory,
+    onCreateNewCategory
   }
 };

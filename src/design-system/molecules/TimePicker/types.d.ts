@@ -6,7 +6,6 @@ declare namespace iTimePicker {
     visible?: boolean;
     finishText?: string;
     cancelText?: string;
-    onDismiss?: () => void;
     onSelect?: (value: string) => void;
     onFinish?: () => void;
     onCancel?: () => void;

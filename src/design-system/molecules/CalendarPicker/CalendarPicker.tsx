@@ -19,7 +19,6 @@ const CalendarPicker = forwardRef<iCalendarPicker.Ref, iCalendarPicker.Props>(({
   cancelText = 'Cancel',
   onFinish,
   onCancel,
-  onDismiss,
   onSelect,
 }, ref) => {
   const { theme } = useTheme();
@@ -39,8 +38,8 @@ const CalendarPicker = forwardRef<iCalendarPicker.Ref, iCalendarPicker.Props>(({
 
   return (
     <Fragment>
-      <Modal transparent visible={isPickerVisible} onDismiss={onDismiss} animationType="slide">
-        <Backdrop onPress={onDismiss} />
+      <Modal transparent visible={isPickerVisible} onRequestClose={onCancel} animationType="slide">
+        <Backdrop onPress={onCancel} />
         <View style={styles.container}>
           <View 
             style={[

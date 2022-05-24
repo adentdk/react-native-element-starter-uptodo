@@ -111,7 +111,6 @@ const AddNewTask: FC = () => {
           name: 'date',
         }}
         visible={isCalendarPickerVisible}
-        onDismiss={toggleCalendarPickerVisibility}
         onCancel={toggleCalendarPickerVisibility}
         onFinish={() => {
           toggleCalendarPickerVisibility();
@@ -125,7 +124,6 @@ const AddNewTask: FC = () => {
           name: 'time',
         }}
         visible={isTimePickerVisible}
-        onDismiss={toggleTimePickerVisibility}
         onCancel={toggleTimePickerVisibility}
         onFinish={toggleTimePickerVisibility}
       />
@@ -136,7 +134,6 @@ const AddNewTask: FC = () => {
           name: 'category',
         }}
         visible={isCategoryPickerVisible}
-        onDismiss={toggleCategoryPickerVisibility}
         onCancel={toggleCategoryPickerVisibility}
         onFinish={toggleCategoryPickerVisibility}
       />

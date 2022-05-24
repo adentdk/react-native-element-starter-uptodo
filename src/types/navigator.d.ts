@@ -14,6 +14,7 @@ declare namespace iNavigator {
     Login: undefined;
     Register: undefined;
     FingerPrintScanner: undefined;
+    CreateCategory: undefined;
     Main: {
       screen: keyof BottomParamList;
     };

@@ -10,6 +10,7 @@ import { useTheme } from '@rneui/themed';
 import Login from 'screens/Login';
 import Register from 'screens/Register';
 import BottomNavigation from './BottomNavigation';
+import CreateCategory from 'screens/CreateCategory';
 
 const RootNavigatior: FC = ({ }) => {
   const { Navigator, Group, Screen } = createNativeStackNavigator<iNavigator.RootParamList>();
@@ -55,6 +56,11 @@ const RootNavigatior: FC = ({ }) => {
           }}
           name="Main"
           component={BottomNavigation}
+        />
+
+        <Screen
+          name="CreateCategory"
+          component={CreateCategory}
         />
       </Group>
     </Navigator>

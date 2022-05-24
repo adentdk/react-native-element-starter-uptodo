@@ -16,7 +16,6 @@ const TimePicker = forwardRef<iTimePicker.Ref, iTimePicker.Props>(({
   cancelText = 'Cancel',
   onFinish,
   onCancel,
-  onDismiss,
   onSelect,
 }, ref) => {
   const styles = useStyles();
@@ -43,8 +42,8 @@ const TimePicker = forwardRef<iTimePicker.Ref, iTimePicker.Props>(({
 
   return (
     <Fragment>
-      <Modal transparent visible={isPickerVisible} onDismiss={onDismiss} animationType="slide">
-        <Backdrop onPress={onDismiss} />
+      <Modal transparent visible={isPickerVisible} onRequestClose={onCancel} animationType="slide">
+        <Backdrop onPress={onCancel} />
         <View style={styles.container}>
           <View 
             style={[

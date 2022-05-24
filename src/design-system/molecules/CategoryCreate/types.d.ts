@@ -2,35 +2,28 @@ import { ControllerProps } from "react-hook-form";
 import type Category from "@model/Category";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
-declare namespace iCategoryPicker {
+declare namespace iCategoryCreate {
   interface Props {
-    value?: string;
     visible?: boolean;
-    finishText?: string;
-    onCancel?: () => void;
-    onSelect?: (value?: string) => void;
     onFinish?: () => void;
+    onCancel?: () => void;
   }
 
   interface Ref {
     togglePickerVisibility: () => void;
   }
 
-  interface DatabaseProps {
-    categories?: Category[];
-  }
-
   interface CategoryModel extends Category {}
 
-  type ComposePropsInput = Props & RefAttributes<Ref> & DatabaseProps;
+  type ComposePropsInput = Props & RefAttributes<Ref>;
 
   type ComposePropsOutput = ForwardRefExoticComponent<ComposePropsInput>;
 
-  type ComponentProps = Props & RefAttributes<Ref> & DatabaseProps;
+  type ComponentProps = Props & RefAttributes<Ref>;
 
   interface PropControl extends Omit<Props, 'ref' | 'value'> {
     formProps: Omit<ControllerProps<any>, 'render'>
   }
 }
 
-export { iCategoryPicker };
+export { iCategoryCreate };

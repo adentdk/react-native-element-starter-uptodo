@@ -5,7 +5,6 @@ declare namespace iCalendarPicker {
   interface Props extends CalendarProps {
     value?: Date,
     visible?: boolean;
-    onDismiss?: () => void;
     onSelect?: (date: Date, fdate: string) => void;
     finishText?: string;
     cancelText?: string;
